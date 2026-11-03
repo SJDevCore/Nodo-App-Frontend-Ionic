@@ -2,16 +2,7 @@ import { Component, inject, signal } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-import {
-  IonButton,
-  IonContent,
-  IonHeader,
-  IonInput,
-  IonText,
-  IonTitle,
-  IonToolbar,
-  IonInputPasswordToggle,
-} from '@ionic/angular';
+import { IonButton, IonContent, IonInput, IonText, IonInputPasswordToggle } from '@ionic/angular';
 import { AuthService } from '../../../../core/services/auth';
 
 /**
@@ -23,18 +14,7 @@ import { AuthService } from '../../../../core/services/auth';
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
-  imports: [
-    ReactiveFormsModule,
-    RouterLink,
-    IonHeader,
-    IonToolbar,
-    IonTitle,
-    IonContent,
-    IonInput,
-    IonButton,
-    IonText,
-    IonInputPasswordToggle,
-  ],
+  imports: [ReactiveFormsModule, RouterLink, IonContent, IonInput, IonButton, IonText, IonInputPasswordToggle],
 })
 export class LoginPage {
   private readonly fb = inject(FormBuilder);
