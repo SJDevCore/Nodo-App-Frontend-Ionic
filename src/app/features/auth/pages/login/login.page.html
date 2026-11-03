@@ -1,0 +1,49 @@
+<ion-content class="ion-padding" [fullscreen]="true">
+  <main class="login">
+    <header class="login__brand">
+      <div class="login__logo" aria-hidden="true">N</div>
+      <h1 class="login__title">Nodo</h1>
+      <p class="login__subtitle">Viajen en grupo, lleguen juntos</p>
+    </header>
+
+    <!-- novalidate: la validación la hace Angular, no el navegador -->
+    <form class="login__form" [formGroup]="form" (ngSubmit)="submit()" novalidate>
+      <ion-input
+        formControlName="email"
+        type="email"
+        inputmode="email"
+        autocomplete="email"
+        label="Correo"
+        labelPlacement="floating"
+        fill="outline"
+        errorText="Ingresa un correo válido"
+      ></ion-input>
+
+      <ion-input
+        formControlName="password"
+        type="password"
+        autocomplete="current-password"
+        label="Contraseña"
+        labelPlacement="floating"
+        fill="outline"
+        errorText="Ingresa tu contraseña"
+      >
+        <ion-input-password-toggle slot="end"></ion-input-password-toggle>
+      </ion-input>
+
+      <!-- Error que devuelve el backend (credenciales incorrectas, servidor caído…) -->
+      @if (errorMessage()) {
+      <ion-text color="danger">
+        <p class="login__error" role="alert">{{ errorMessage() }}</p>
+      </ion-text>
+      }
+
+      <ion-button class="login__submit" type="submit" expand="block"> Iniciar sesión </ion-button>
+    </form>
+
+    <p class="login__footer">
+      ¿No tienes cuenta?
+      <a routerLink="/register">Regístrate</a>
+    </p>
+  </main>
+</ion-content>

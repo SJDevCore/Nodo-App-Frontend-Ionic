@@ -14,7 +14,7 @@ const TOKEN_KEY = 'auth_token';
  */
 
 @Service()
-export class Auth {
+export class AuthService {
   private readonly http = inject(HttpClient);
   private readonly url = `${environment.apiUrl}/auth`;
   private readonly token = signal<string | null>(null);

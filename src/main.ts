@@ -11,6 +11,8 @@ import { IonicRouteStrategy, provideIonicAngular } from '@ionic/angular';
 import { AppComponent } from './app/app.component';
 import { routes } from './app/app.routes';
 import { provideHttpClient } from '@angular/common/http';
+import { inject, provideAppInitializer } from '@angular/core';
+import { AuthService } from './app/core/services/auth';
 
 bootstrapApplication(AppComponent, {
   providers: [
@@ -18,5 +20,8 @@ bootstrapApplication(AppComponent, {
     provideIonicAngular(),
     provideRouter(routes, withPreloading(PreloadAllModules), withComponentInputBinding()),
     provideHttpClient(),
+    provideAppInitializer(() => {
+      inject(AuthService).loadSession();
+    }),
   ],
 });
